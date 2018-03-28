@@ -1,3 +1,4 @@
+
 from django import forms
 
 # all the Django forms must inherit forms.Form
@@ -110,7 +111,6 @@ class RegisterForm(forms.Form):
                         }
                     )
                 )
-
 
     def clean(self):
         data = self.cleaned_data
