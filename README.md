@@ -1,2 +1,2 @@
 # Django-eShop
-An e-commerce web application built using django.
+> An e-commerce web application built using django.
