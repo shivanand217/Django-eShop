@@ -1,3 +1,4 @@
+
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -16,7 +17,6 @@ def home_page(request):
         name = request.user.username
         context["premium_content"] = "Yeahh.. Hello "+name
     return render(request, "home_page.html", context)
-
 
 def about_page(request):
     context = {
