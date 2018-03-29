@@ -2,7 +2,7 @@ from django import forms
 
 # all the Django forms must inherit forms.Form
 class ContactForm(forms.Form):
-    
+
     # using fullname, email, content in request.POST.get()
     fullname = forms.CharField (
                     widget=forms.TextInput(
@@ -123,6 +123,7 @@ class RegisterForm(forms.Form):
         password_confirm = self.cleaned_data.get('password_confirm')
         email = self.cleaned_data.get('email')
         
+        # passwords must match
         if password != password_confirm:
             raise forms.ValidationError("passwords don't matched")
         

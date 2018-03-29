@@ -6,6 +6,7 @@ from .forms import ContactForm
 from .forms import LoginForm
 from .forms import RegisterForm
 
+from django.contrib.auth import get_user_model
 
 def home_page(request):
     # add different context here
@@ -69,6 +70,7 @@ def login_page(request):
     return render(request, "auth/login.html", context)
 
 
+User = get_user_model()
 # make RegisterForm for this
 def register_page(request):
     # create instance of RegisterForm
@@ -78,5 +80,9 @@ def register_page(request):
     }
     if register_form.is_valid():
         print(register_form.cleaned_data)
+        username= register_form.cleaned_data.get("username")
+        email= register_form.cleaned_data.get("email")
+        password= register_form.cleaned_data.get("password")
+        User.objects.create_user(username, email, password)
 
     return render(request, "auth/register.html", context)
