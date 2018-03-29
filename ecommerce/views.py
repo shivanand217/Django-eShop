@@ -1,4 +1,3 @@
-
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -6,6 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from .forms import LoginForm
 from .forms import RegisterForm
+
 
 def home_page(request):
     # add different context here
@@ -47,21 +47,22 @@ def login_page(request):
     context = {
         "form": login_form
     }
-    print("user logged in")
-    print(request.user.is_authenticated())
 
     if login_form.is_valid():
         print(login_form.cleaned_data)
         username = login_form.cleaned_data.get("username")
         password = login_form.cleaned_data.get("password")
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username= username, password= password)
+        print("user logged in")
         print(request.user.is_authenticated())
-        
+
         if user is not None:
             # login function for making the user login
             login(request, user) # makes the user Login
             context['form'] = LoginForm()
             # redirect to a success page
+            print("user logged in")
+            print(request.user.is_authenticated())
             return redirect("/")
         else:
             print("Error in authentication...")
@@ -73,7 +74,6 @@ def login_page(request):
 def register_page(request):
     # create instance of RegisterForm
     register_form = RegisterForm(request.POST or None)
-
     context = {
         "form": register_form
     }
