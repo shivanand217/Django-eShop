@@ -25,7 +25,6 @@ def about_page(request):
     }
     return render(request, "home_page.html", context)
 
-
 # make ContactForm for this
 def contact_page(request):
     # contact form class instance
