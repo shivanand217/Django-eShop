@@ -116,3 +116,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static_my_proj"),
+]
+
+# this is what gonna actually serves the files, actual Root of the file
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
