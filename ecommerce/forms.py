@@ -1,4 +1,3 @@
-
 from django import forms
 
 # all the Django forms must inherit forms.Form
@@ -118,6 +117,3 @@ class RegisterForm(forms.Form):
         password_confirm = self.cleaned_data.get('password_confirm')
         email = self.cleaned_data.get('email')
         # email validation
-
-
-
