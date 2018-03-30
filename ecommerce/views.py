@@ -8,7 +8,6 @@ from .forms import RegisterForm
 
 from django.contrib.auth import get_user_model
 
-
 def home_page(request):
     # add different context here
     context = {
@@ -19,6 +18,7 @@ def home_page(request):
         name = request.user.username
         context["premium_content"] = "Yeahh.. Hello "+name
     return render(request, "home_page.html", context)
+
 
 def about_page(request):
     context = {
