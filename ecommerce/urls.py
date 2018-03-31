@@ -1,5 +1,4 @@
-"""ecommerce URL Configuration
-
+""" ecommerce URL Configuration
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
 Examples:
@@ -19,7 +18,8 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 
-from products.views import product_list_view
+from products.views import  ProductListView, product_list_view
+from products.views import  ProductDetailView, product_detail_view
 
 from .views import home_page, about_page, contact_page, login_page, register_page
 
@@ -30,8 +30,10 @@ urlpatterns = [
     url(r'^login/', login_page, name="login"),
     url(r'^contact/', contact_page, name="contact"),
     url(r'^register/', register_page, name="register"),
-    #url(r'^products/', ProductListView.as_view()),
-    url(r'^products/', product_list_view),
+    url(r'^products/', ProductListView.as_view()),
+    url(r'^products-fbv/', product_list_view),
+    url(r'^products/', ProductDetailView.as_view()),
+    url(r'^products/', product_detail_view),
     url(r'^admin/', admin.site.urls),
 ]
 
