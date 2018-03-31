@@ -7,6 +7,7 @@ import os
 # Everytime saving something in our models do,  [makemigrations and migrate]
 
 def get_filename_ext(filepath):
+    
     base_name = os.path.basename(filepath) # returns basename of the file
     name, ext = os.path.splitext(base_name) # separates filename with its extension
     return name, ext
