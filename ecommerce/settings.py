@@ -98,7 +98,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -122,5 +121,7 @@ STATICFILES_DIRS = [
 # this is what gonna actually serves the files, actual Root of the file
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
 
+# all the uploads are done to media_root
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT =  os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
