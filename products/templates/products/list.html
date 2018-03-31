@@ -1,6 +1,8 @@
 
-{% for obj in object_list %}
-    
-    <h1>{{ obj.title }}</h1>
-    
+{% for object in object_list %}    
+
+    <h1>Title: {{ object.title }}</h1> 
+    <h2>Description: {{ object.description }}</h2> 
+    <h3>Price: {{ object.price }}</h3> 
+
 {% endfor %}

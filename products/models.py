@@ -13,7 +13,6 @@ def get_filename_ext(filepath):
 
 #for giving a new random pathname
 def upload_image_path(instance, filename):
-
     print(instance)
     print(filename)
     # changing filename
@@ -23,7 +22,6 @@ def upload_image_path(instance, filename):
     return "products/{new_filename}/{final_filename}".format(new_filename= new_filename,final_filename= final_filename)
 
 class Product(models.Model):
-    
     title = models.CharField(max_length=120)
     description = models.TextField()
     price = models.DecimalField(decimal_places= 2, max_digits= 10, default= 39.99)
