@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, View
 
 from .models import Product
@@ -14,7 +14,6 @@ class ProductListView(ListView):
         print(context)
         return context
     '''
-
 
 # function based views
 def product_list_view(request):
@@ -44,17 +43,14 @@ class ProductDetailView(DetailView):
 
 
 # function based views
-def product_detail_view(request, *args, **kwargs):
-    #print(args)
-    #print(kwargs)for showing particular product
-    # get the pk value 
-    object = Product.objects.get(pk= pk)
-
+def product_detail_view(request, pk=None, *args, **kwargs):
+    # print(args)
+    # print(kwargs) for showing particular product
+    # get the pk value , pk is django default object (primary key or id)
+    #instance = Product.objects.get(pk= pk)
+    instance = get_object_or_404(Product, pk=pk)
     context = {
-        "object_list": queryset,
-        "title": "details page",
-        "name": "shiv anand"
+        "object": instance
     }
+    
     return render(request, "products/detail.html", context)
-
-
