@@ -48,7 +48,7 @@ def product_detail_view(request, *args, **kwargs):
     #print(args)
     #print(kwargs)for showing particular product
     # get the pk value 
-    object = Product.objects.get(pk=pk)
+    object = Product.objects.get(pk= pk)
 
     context = {
         "object_list": queryset,
