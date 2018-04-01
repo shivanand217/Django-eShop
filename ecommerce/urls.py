@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
 
+
 # static files currently won't be served in production
 # static_cdn is our static service folder 
 # our static server is completely different from our django server

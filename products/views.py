@@ -36,7 +36,7 @@ class ProductDetailView(DetailView):
         pk = self.kwargs.get('pk')
         instance = get_object_or_404(Product, pk)
         if instance is None:
-            raise Htpp404("Product doesn't exists.")
+            raise Http404("Product doesn't exists.")
         return instance
 
     def get_context_data(self, *args, **kwargs):
@@ -51,24 +51,29 @@ def product_detail_view(request, pk=None, *args, **kwargs):
     # print(kwargs) for showing particular product
     # get the pk value , pk is django default object (primary key or id)
     '''
-    try:
-        instance = Product.objects.get(pk=pk)
-    except:
-        print("no product here")
-        raise Http404("product does not exists")
+        try:
+            instance = Product.objects.get(pk=pk)
+        except:
+            print("no product here")
+            raise Http404("product does not exists")
     '''
-    
-    instance = Product.objects.get_by_id(pk)
-    if instance is None:
+    qs = Product.objects.get_by_id(pk)
+    if qs is None:
         raise Http404("Product doesn't exist.")
-    
-    #if qs.exists() and qs.count() == 1:
-      #  instance = qs.first()
-    #else:
-     #   raise Http404("Product does not exists.")
+    print(qs)
+    print(qs.title)
+    print(qs.description)
+    print(qs.price)
 
+    '''
+    if qs.exists() and qs.count() == 1:
+        instance = qs.first()
+    else:
+        raise Http404("Product does not exists.")
+    '''
     context = {
-        "object": instance,
+        "object": qs,
         "pkk": pk
     }
+
     return render(request, "products/fb-detail.html", context)
