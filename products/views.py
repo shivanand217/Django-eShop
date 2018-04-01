@@ -9,7 +9,7 @@ from django.http import Http404
 
 
 class ProductListView(ListView):
-    
+
     queryset = Product.objects.all()
     template_name = "products/list.html"
     
@@ -57,12 +57,15 @@ def product_detail_view(request, pk=None, *args, **kwargs):
         print("no product here")
         raise Http404("product does not exists")
     '''
-    qs = Product.objects.filter(id= pk)
     
-    if qs.exists() and qs.count() == 1:
-        instance = qs.first()
-    else:
-        raise Http404("Product does not exists.")
+    instance = Product.objects.get_by_id(pk)
+    if instance is None:
+        raise Http404("Product doesn't exist.")
+    
+    #if qs.exists() and qs.count() == 1:
+      #  instance = qs.first()
+    #else:
+     #   raise Http404("Product does not exists.")
 
     context = {
         "object": instance,
