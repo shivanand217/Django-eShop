@@ -9,8 +9,8 @@ from django.http import Http404
 
 
 class ProductListView(ListView):
+    
     queryset = Product.objects.all()
-
     template_name = "products/list.html"
     
     def get_context_data(self, *args, **kwargs):
@@ -27,8 +27,8 @@ def product_list_view(request):
     return render(request, "products/list.html", context)
 
 class ProductDetailView(DetailView):
-    queryset = Product.objects.all()
 
+    queryset = Product.objects.all()
     template_name = "products/cb-detail.html"
 
     def get_object(self, *args, **kwargs):
